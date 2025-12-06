@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инспектор Качества в Гуанчжоу | Проверка товаров в Китае</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #e63946;
+            --primary-dark: #c1121f;
+            --secondary: #1d3557;
+            --accent: #f4a261;
+            --light: #f1faee;
+            --dark: #14213d;
+            --gray: #6c757d;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--dark);
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+            display: flex;
+            align-items: center;
+            padding: 100px 5% 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23e63946" stroke-width="0.5" opacity="0.3"/><circle cx="50" cy="50" r="30" fill="none" stroke="%23f4a261" stroke-width="0.5" opacity="0.3"/><circle cx="50" cy="50" r="20" fill="none" stroke="%23e63946" stroke-width="0.5" opacity="0.3"/></svg>') center/contain no-repeat;
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(230, 57, 70, 0.2);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--primary);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(230, 57, 70, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid var(--white);
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--dark);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: rgba(230, 57, 70, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--light);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image-main {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+        }
+
+        .about-card {
+            position: absolute;
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .about-card-1 {
+            top: 20px;
+            right: -30px;
+        }
+
+        .about-card-2 {
+            bottom: 40px;
+            left: -30px;
+        }
+
+        .about-card h4 {
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+
+        .about-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .about-feature .icon {
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 0.8rem;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .service-card .price {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .service-card .price span {
+            font-size: 0.9rem;
+            color: var(--gray);
+            font-weight: 400;
+        }
+
+        /* Process Section */
+        .process {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+        }
+
+        .process .section-header h2,
+        .process .section-header p {
+            color: var(--white);
+        }
+
+        .process .section-header p {
+            opacity: 0.8;
+        }
+
+        .process .section-tag {
+            background: rgba(230, 57, 70, 0.3);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .process-step {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .process-step:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin: 0 auto 1.5rem;
+        }
+
+        .process-step h3 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .process-step p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+        }
+
+        /* Advantages Section */
+        .advantages {
+            background: var(--light);
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .advantage-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+
+        .advantage-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .advantage-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .advantage-card h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .advantage-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--light);
+            padding: 2.5rem;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            font-size: 5rem;
+            color: var(--primary);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .testimonial-info h4 {
+            color: var(--secondary);
+        }
+
+        .testimonial-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .testimonial-rating {
+            color: var(--accent);
+            margin-top: 1rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background: var(--light);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pricing-card.popular {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+            color: var(--white);
+        }
+
+        .pricing-card.popular .pricing-price,
+        .pricing-card.popular h3,
+        .pricing-card.popular p {
+            color: var(--white);
+        }
+
+        .pricing-card.popular .pricing-features li {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-card > p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-price span {
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray);
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* FAQ Section */
+        .faq {
+            background: var(--white);
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--light);
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            background: rgba(0,0,0,0.02);
+        }
+
+        .faq-question .icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question .icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .faq-answer p {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--gray);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+        }
+
+        .contact .section-header h2,
+        .contact .section-header p {
+            color: var(--white);
+        }
+
+        .contact .section-header p {
+            opacity: 0.8;
+        }
+
+        .contact .section-tag {
+            background: rgba(230, 57, 70, 0.3);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            color: var(--white);
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item .icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .contact-item h4 {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            font-weight: 400;
+        }
+
+        .contact-item p {
+            font-size: 1.1rem;
+            margin: 0;
+            opacity: 1;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(0,0,0,0.1);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 60px 5% 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand h3 span {
+            color: var(--primary);
+        }
+
+        .footer-brand p {
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: var(--primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .contact-content,
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .about-card {
+                position: relative;
+                top: auto !important;
+                right: auto !important;
+                bottom: auto !important;
+                left: auto !important;
+                margin-top: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Quality<span>Check</span></div>
+        <ul class="nav-links">
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#services">Услуги</a></li>
+            <li><a href="#process">Как работаем</a></li>
+            <li><a href="#pricing">Цены</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <a href="#contact" class="nav-cta">Связаться</a>
+        <div class="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">🇨🇳 Гуанчжоу, Китай</span>
+            <h1>Профессиональная <span>инспекция качества</span> товаров в Китае</h1>
+            <p>Защитите свой бизнес от брака и некачественной продукции. Проверяем товары прямо на фабриках Гуанчжоу перед отправкой.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">📞 Заказать проверку</a>
+                <a href="#services" class="btn-secondary">Узнать больше</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Проверенных партий</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Довольных клиентов</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">Лет опыта</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <div class="about-image">
+                <div class="about-image-main">🔍</div>
+                <div class="about-card about-card-1">
+                    <h4>✓ Сертификация</h4>
+                    <p>ISO 9001 стандарты</p>
+                </div>
+                <div class="about-card about-card-2">
+                    <h4>🌏 Локация</h4>
+                    <p>Гуанчжоу, Фошань, Шэньчжэнь</p>
+                </div>
+            </div>
+            <div class="about-text">
+                <span class="section-tag">О компании</span>
+                <h2>Ваш надежный партнёр в Китае</h2>
+                <p>Мы — команда профессиональных инспекторов, работающих непосредственно в Гуанчжоу и окрестностях. За 7 лет работы мы помогли сотням компаний из России и СНГ избежать потерь от некачественной продукции.</p>
+                <p>Наши инспекторы говорят на китайском и русском языках, имеют глубокие знания местного рынка и производственных стандартов. Мы знаем, как работают китайские фабрики изнутри.</p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <span class="icon">✓</span>
+                        <span>Русскоговорящая команда</span>
+                    </div>
+                    <div class="about-feature">
+                        <span class="icon">✓</span>
+                        <span>Быстрый выезд на фабрику</span>
+                    </div>
+                    <div class="about-feature">
+                        <span class="icon">✓</span>
+                        <span>Фото и видео отчеты</span>
+                    </div>
+                    <div class="about-feature">
+                        <span class="icon">✓</span>
+                        <span>Гарантия результата</span>
+                    </div>
+                </div>
+                <a href="#contact" class="btn-primary" style="margin-top: 2rem;">Обсудить проект</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <span class="section-tag">Наши услуги</span>
+            <h2>Полный спектр инспекционных услуг</h2>
+            <p>Выберите подходящий тип проверки для вашего бизнеса</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">📦</div>
+                <h3>Проверка перед отправкой (PSI)</h3>
+                <p>Финальная проверка готовой партии товара перед отгрузкой. Проверяем количество, качество, маркировку и упаковку согласно вашим требованиям.</p>
+                <div class="price">от \$188 <span>/ инспекция</span></div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏭</div>
+                <h3>Аудит фабрики</h3>
+                <p>Комплексная проверка производственных мощностей, системы контроля качества, условий труда и документации поставщика.</p>
+                <div class="price">от \$288 <span>/ аудит</span></div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔬</div>
+                <h3>Проверка в процессе (DPI)</h3>
+                <p>Инспекция на этапе производства, когда готово 20-80% партии. Позволяет выявить проблемы заранее и скорректировать процесс.</p>
+                <div class="price">от \$168 <span>/ инспекция</span></div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📋</div>
+                <h3>Проверка первых образцов</h3>
+                <p>Детальный анализ первых образцов продукции перед запуском массового производства. Тестирование функций и материалов.</p>
+                <div class="price">от \$128 <span>/ проверка</span></div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📐</div>
+                <h3>Лабораторные тесты</h3>
+                <p>Организация сертификационных тестов в аккредитованных лабораториях Китая. CE, RoHS, FDA и другие стандарты.</p>
+                <div class="price">По запросу</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚚</div>
+                <h3>Контроль загрузки</h3>
+                <p>Присутствие инспектора при загрузке товара в контейнер. Фиксация процесса, проверка пломб и документов.</p>
+                <div class="price">от \$148 <span>/ загрузка</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="section-header">
+            <span class="section-tag">Как мы работаем</span>
+            <h2>Простой процесс в 4 шага</h2>
+            <p>От заявки до готового отчета — всё быстро и прозрачно</p>
+        </div>
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h3>Оставьте заявку</h3>
+                <p>Заполните форму или напишите нам в мессенджер. Расскажите о товаре и требованиях к проверке.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h3>Согласование</h3>
+                <p>Мы изучим детали, предложим оптимальный план инспекции и согласуем дату выезда на фабрику.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h3>Инспекция</h3>
+                <p>Наш инспектор проводит проверку по согласованному чек-листу с фото и видео фиксацией.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <h3>Отчет</h3>
+                <p>Получите детальный отчет в течение 24 часов с выводами и рекомендациями.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section class="advantages" id="advantages">
+        <div class="section-header">
+            <span class="section-tag">Почему мы</span>
+            <h2>Наши преимущества</h2>
+            <p>Что отличает нас от других инспекционных компаний</p>
+        </div>
+        <div class="advantages-grid">
+            <div class="advantage-card">
+                <div class="advantage-icon">⚡</div>
+                <div>
+                    <h3>Быстрый выезд</h3>
+                    <p>Выезжаем на инспекцию в течение 24-48 часов после подтверждения заказа</p>
+                </div>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">💬</div>
+                <div>
+                    <h3>Связь на русском</h3>
+                    <p>Вся коммуникация и отчеты на русском языке, без языковых барьеров</p>
+                </div>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">📸</div>
+                <div>
+                    <h3>Фото и видео</h3>
+                    <p>Детальные фото-отчеты с 100+ фотографиями и видео процесса проверки</p>
+                </div>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">🎯</div>
+                <div>
+                    <h3>Индивидуальный подход</h3>
+                    <p>Создаем уникальный чек-лист под ваш товар и требования</p>
+                </div>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">💰</div>
+                <div>
+                    <h3>Прозрачные цены</h3>
+                    <p>Фиксированная стоимость без скрытых платежей и дополнительных сборов</p>
+                </div>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">🛡️</div>
+                <div>
+                    <h3>Гарантия качества</h3>
+                    <p>Если пропустим критический дефект — проведем повторную инспекцию бесплатно</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-header">
+            <span class="section-tag">Отзывы</span>
+            <h2>Что говорят наши клиенты</h2>
+            <p>Реальные отзывы предпринимателей, которые работают с нами</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">Работаем уже 2 года. Ребята спасли нас от крупной партии брака на сумму более \$50,000. Отчеты подробные, на связи всегда. Рекомендую всем, кто возит из Китая!</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">АК</div>
+                    <div class="testimonial-info">
+                        <h4>Алексей Козлов</h4>
+                        <p>ООО "ТехноИмпорт", Москва</p>
+                    </div>
+                </div>
+                <div class="testimonial-rating">★★★★★</div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">Заказывала проверку детских игрушек. Инспектор выявил проблемы с маркировкой, которые могли привести к проблемам на таможне. Очень благодарна за профессионализм!</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">МС</div>
+                    <div class="testimonial-info">
+                        <h4>Марина Соколова</h4>
+                        <p>ИП Соколова, Санкт-Петербург</p>
+                    </div>
+                </div>
+                <div class="testimonial-rating">★★★★★</div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">Отличный сервис! Быстро, качественно, с понятными отчетами. Цены адекватные для рынка. Теперь все партии электроники проверяем только через них.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">ДН</div>
+                    <div class="testimonial-info">
+                        <h4>Дмитрий Новиков</h4>
+                        <p>ElectroTrade, Новосибирск</p>
+                    </div>
+                </div>
+                <div class="testimonial-rating">★★★★★</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="section-header">
+            <span class="section-tag">Тарифы</span>
+            <h2>Прозрачное ценообразование</h2>
+            <p>Выберите подходящий вариант для вашего объема поставок</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Стартовый</h3>
+                <p>Для первой проверки</p>
+                <div class="pricing-price">\$188 <span>/ инспекция</span></div>
+                <ul class="pricing-features">
+                    <li>Проверка до 500 единиц</li>
+                    <li>Полный чек-лист (AQL 2.5)</li>
+                    <li>50+ фотографий</li>
+                    <li>Отчет в течение 24ч</li>
+                    <li>Консультация по результатам</li>
+                </ul>
+                <a href="#contact" class="btn-primary" style="width: 100%;">Заказать</a>
+            </div>
+            <div class="pricing-card popular">
+                <span class="popular-badge">Популярный</span>
+                <h3>Бизнес</h3>
+                <p>Для регулярных поставок</p>
+                <div class="pricing-price">\$168 <span>/ инспекция</span></div>
+                <ul class="pricing-features">
+                    <li>Проверка до 3000 единиц</li>
+                    <li>Расширенный чек-лист</li>
+                    <li>100+ фотографий + видео</li>
+                    <li>Отчет в течение 12ч</li>
+                    <li>Приоритетная поддержка</li>
+                    <li>Скидка при пакете 5+ инспекций</li>
+                </ul>
+                <a href="#contact" class="btn-primary" style="width: 100%; background: var(--white); color: var(--secondary);">Заказать</a>
+            </div>
+            <div class="pricing-card">
+                <h3>Корпоративный</h3>
+                <p>Для крупного бизнеса</p>
+                <div class="pricing-price">Договор</div>
+                <ul class="pricing-features">
+                    <li>Неограниченный объем</li>
+                    <li>Индивидуальные условия</li>
+                    <li>Выделенный менеджер</li>
+                    <li>Срочные инспекции 24/7</li>
+                    <li>Ежемесячная отчетность</li>
+                    <li>Специальные тарифы</li>
+                </ul>
+                <a href="#contact" class="btn-primary" style="width: 100%;">Обсудить</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="section-header">
+            <span class="section-tag">FAQ</span>
+            <h2>Частые вопросы</h2>
+            <p>Ответы на популярные вопросы о наших услугах</p>
+        </div>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Как быстро можно организовать инспекцию?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Стандартный срок — 24-48 часов после подтверждения заказа и оплаты. Для срочных случаев возможен выезд в тот же день (при наличии свободного инспектора в нужном районе).</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Какие товары вы проверяете?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Мы проверяем практически любые товары: электроника, одежда, обувь, мебель, игрушки, косметика, бытовая техника, промышленное оборудование и многое другое.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Что входит в отчет об инспекции?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Подробный отчет включает: результаты проверки по каждому пункту чек-листа, фотографии продукции и дефектов, статистику по выборке, общее заключение и рекомендации.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Работаете ли вы в других городах Китая?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Да, помимо Гуанчжоу мы работаем в Шэньчжэне, Фошане, Дунгуане, Иу и других крупных производственных центрах провинции Гуандун и Чжэцзян.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Как происходит оплата?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Принимаем оплату банковским переводом, через PayPal или на карту. Оплата производится после согласования деталей инспекции, до выезда на фабрику.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Что делать, если обнаружен брак?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Мы предоставим детальный отчет о выявленных дефектах. Вы сможете использовать его для переговоров с поставщиком о замене, доработке или скидке. При необходимости проведем повторную проверку.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-header">
+            <span class="section-tag">Контакты</span>
+            <h2>Свяжитесь с нами</h2>
+            <p>Ответим на вопросы и рассчитаем стоимость инспекции</p>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Готовы помочь!</h3>
+                <p>Напишите нам любым удобным способом или заполните форму. Ответим в течение 2 часов в рабочее время (по Пекинскому времени).</p>
+                <div class="contact-item">
+                    <div class="icon">📧</div>
+                    <div>
+                        <h4>Email</h4>
+                        <p>info@qualitycheck-gz.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="icon">📱</div>
+                    <div>
+                        <h4>WhatsApp / WeChat</h4>
+                        <p>+86 132 XXXX XXXX</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="icon">📍</div>
+                    <div>
+                        <h4>Офис</h4>
+                        <p>Гуанчжоу, район Тяньхэ</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="icon">🕐</div>
+                    <div>
+                        <h4>Рабочие часы</h4>
+                        <p>Пн-Сб: 9:00 - 18:00 (UTC+8)</p>
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Ваше имя *</label>
+                    <input type="text" id="name" name="name" required placeholder="Иван Иванов">
+                </div>
+                <div class="form-group">
+                    <label for="contact">Телефон или Email *</label>
+                    <input type="text" id="contact" name="contact" required placeholder="+7 999 123 45 67">
+                </div>
+                <div class="form-group">
+                    <label for="service">Тип услуги</label>
+                    <select id="service" name="service">
+                        <option value="">Выберите услугу</option>
+                        <option value="psi">Проверка перед отправкой (PSI)</option>
+                        <option value="dpi">Проверка в процессе (DPI)</option>
+                        <option value="audit">Аудит фабрики</option>
+                        <option value="sample">Проверка образцов</option>
+                        <option value="loading">Контроль загрузки</option>
+                        <option value="other">Другое</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Сообщение</label>
+                    <textarea id="message" name="message" placeholder="Опишите ваш товар и требования к инспекции..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">Отправить заявку</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Quality<span>Check</span></h3>
+                <p>Профессиональная инспекция качества товаров в Китае. Защищаем ваш бизнес от рисков и финансовых потерь с 2018 года.</p>
+                <div class="footer-social">
+                    <a href="#" title="WeChat">💬</a>
+                    <a href="#" title="Telegram">✈️</a>
+                    <a href="#" title="WhatsApp">📱</a>
+                    <a href="#" title="Instagram">📷</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Услуги</h4>
+                <ul>
+                    <li><a href="#services">Проверка PSI</a></li>
+                    <li><a href="#services">Аудит фабрики</a></li>
+                    <li><a href="#services">Инспекция DPI</a></li>
+                    <li><a href="#services">Лабораторные тесты</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Компания</h4>
+                <ul>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#process">Как работаем</a></li>
+                    <li><a href="#testimonials">Отзывы</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Регионы работы</h4>
+                <ul>
+                    <li><a href="#">Гуанчжоу</a></li>
+                    <li><a href="#">Шэньчжэнь</a></li>
+                    <li><a href="#">Фошань</a></li>
+                    <li><a href="#">Иу</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 QualityCheck. Все права защищены. | Инспекция качества в Китае</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/86132XXXXXXXX" class="whatsapp-float" target="_blank" title="Написать в WhatsApp">
+        💬
+    </a>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Toggle current item
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Here you would typically send the data to a server
+            console.log('Form submitted:', data);
+            
+            // Show success message
+            alert('Спасибо за заявку! Мы свяжемся с вами в ближайшее время.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navigation background on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.boxShadow = '0 2px 30px rgba(0,0,0,0.15)';
+            } else {
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Mobile menu toggle (basic implementation)
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.background = 'white';
+                navLinks.style.padding = '1rem';
+                navLinks.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply animation to elements
+        document.querySelectorAll('.service-card, .process-step, .advantage-card, .testimonial-card, .pricing-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Counter animation for stats
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target + (element.dataset.suffix || '');
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start) + (element.dataset.suffix || '');
+                }
+            }, 16);
+        }
+
+        // Trigger counter animation when hero section is visible
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.querySelectorAll('.stat-number').forEach(stat => {
+                        const value = parseInt(stat.textContent);
+                        const suffix = stat.textContent.replace(/[0-9]/g, '');
+                        stat.dataset.suffix = suffix;
+                        animateCounter(stat, value);
+                    });
+                    heroObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        heroObserver.observe(document.querySelector('.hero'));
+    </script>
+
+</body>
+</html>
