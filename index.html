@@ -2,46 +2,63 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <!--
+        meta name="viewport" делает сайт адаптивным:
+        ширина вьюпорта = ширине устройства, базовый масштаб = 1.
+        Обязательно для нормального отображения на мобильных.
+    -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Инспектор Качества в Гуанчжоу | Проверка товаров в Китае</title>
+
     <style>
+        /* 
+            Сбрасываем базовые отступы и включаем box-sizing: border-box
+            для всех элементов, чтобы ширина/высота считались вместе с padding и border.
+        */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /*
+            Переменные CSS (кастомные свойства): основные цвета проекта.
+            Удобно менять дизайн в одном месте.
+        */
         :root {
-            --primary: #e63946;
-            --primary-dark: #c1121f;
-            --secondary: #1d3557;
-            --accent: #f4a261;
-            --light: #f1faee;
-            --dark: #14213d;
-            --gray: #6c757d;
-            --white: #ffffff;
+            --primary: #e63946;       /* Главный акцентный цвет (кнопки, важные элементы) */
+            --primary-dark: #c1121f;  /* Более тёмный вариант акцентного цвета (hover и т.п.) */
+            --secondary: #1d3557;     /* Дополнительный цвет (заголовки, фоны) */
+            --accent: #f4a261;        /* Дополнительный акцент для иконок и рейтингов */
+            --light: #f1faee;         /* Светлый фон для блоков */
+            --dark: #14213d;          /* Тёмный цвет текста и фонов */
+            --gray: #6c757d;          /* Серый цвет текста (описания) */
+            --white: #ffffff;         /* Белый цвет */
         }
 
+        /* Базовые стили для тела документа */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--dark);
-            overflow-x: hidden;
+            overflow-x: hidden; /* Прячем горизонтальный скролл, если что-то вылезет за экран */
         }
 
-        /* Navigation */
+        /* =======================
+           Навигация (верхнее меню)
+           ======================= */
         nav {
-            position: fixed;
+            position: fixed;                   /* Фиксированное меню поверх страницы */
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95); /* Полупрозрачный белый фон */
+            backdrop-filter: blur(10px);       /* Размытие фона (эффект стекла) */
+            z-index: 1000;                     /* Поверх других элементов */
             padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1); /* Лёгкая тень под меню */
         }
 
         .logo {
@@ -57,7 +74,7 @@
         .nav-links {
             display: flex;
             gap: 2rem;
-            list-style: none;
+            list-style: none; /* Убираем маркеры списка */
         }
 
         .nav-links a {
@@ -86,6 +103,7 @@
             transform: translateY(-2px);
         }
 
+        /* Кнопка мобильного меню (бургер) — видна только на маленьких экранах */
         .mobile-menu {
             display: none;
             flex-direction: column;
@@ -100,17 +118,20 @@
             transition: 0.3s;
         }
 
-        /* Hero Section */
+        /* ===================
+           Hero-секция (первый экран)
+           =================== */
         .hero {
-            min-height: 100vh;
+            min-height: 100vh; /* Занимает минимум высоту экрана */
             background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
             display: flex;
             align-items: center;
-            padding: 100px 5% 50px;
+            padding: 100px 5% 50px; /* Отступ сверху учитывает высоту фиксированного меню */
             position: relative;
             overflow: hidden;
         }
 
+        /* Декоративный SVG-узор справа в hero-секции */
         .hero::before {
             content: '';
             position: absolute;
@@ -124,7 +145,7 @@
 
         .hero-content {
             max-width: 600px;
-            z-index: 1;
+            z-index: 1; /* Чтобы текст был поверх декоративного ::before */
         }
 
         .hero-badge {
@@ -158,9 +179,10 @@
         .hero-buttons {
             display: flex;
             gap: 1rem;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* Чтобы на маленьких экранах кнопки переносились */
         }
 
+        /* Общий стиль для основных кнопок */
         .btn-primary {
             background: var(--primary);
             color: var(--white);
@@ -220,11 +242,12 @@
             font-size: 0.9rem;
         }
 
-        /* Section Styles */
+        /* Общие стили секций (отступы) */
         section {
             padding: 100px 5%;
         }
 
+        /* Заголовки секций */
         .section-header {
             text-align: center;
             margin-bottom: 4rem;
@@ -253,14 +276,16 @@
             font-weight: 600;
         }
 
-        /* About Section */
+        /* ==============
+           Блок "О нас"
+           ============== */
         .about {
             background: var(--light);
         }
 
         .about-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr; /* Картинка слева, текст справа */
             gap: 4rem;
             align-items: center;
         }
@@ -269,6 +294,7 @@
             position: relative;
         }
 
+        /* Большой "плашка"-образ инспекции (иконка-лупа) */
         .about-image-main {
             width: 100%;
             height: 500px;
@@ -281,6 +307,7 @@
             box-shadow: 0 30px 60px rgba(0,0,0,0.2);
         }
 
+        /* Маленькие карточки поверх основной картинки */
         .about-card {
             position: absolute;
             background: var(--white);
@@ -320,6 +347,7 @@
             margin-bottom: 1.5rem;
         }
 
+        /* Список преимуществ внутри блока "О нас" */
         .about-features {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -345,11 +373,14 @@
             font-size: 0.8rem;
         }
 
-        /* Services Section */
+        /* ==============
+           Услуги
+           ============== */
         .services {
             background: var(--white);
         }
 
+        /* Сетка карточек услуг: адаптивная, минимум 300px на карточку */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -408,7 +439,9 @@
             font-weight: 400;
         }
 
-        /* Process Section */
+        /* =======================
+           Процесс работы (4 шага)
+           ======================= */
         .process {
             background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
         }
@@ -471,7 +504,9 @@
             font-size: 0.95rem;
         }
 
-        /* Advantages Section */
+        /* =====================
+           Преимущества
+           ===================== */
         .advantages {
             background: var(--light);
         }
@@ -520,7 +555,9 @@
             font-size: 0.9rem;
         }
 
-        /* Testimonials Section */
+        /* =====================
+           Отзывы
+           ===================== */
         .testimonials {
             background: var(--white);
         }
@@ -538,6 +575,7 @@
             position: relative;
         }
 
+        /* Декоративная кавычка в левом верхнем углу отзыва */
         .testimonial-card::before {
             content: '"';
             position: absolute;
@@ -590,7 +628,9 @@
             margin-top: 1rem;
         }
 
-        /* Pricing Section */
+        /* =====================
+           Тарифы (Pricing)
+           ===================== */
         .pricing {
             background: var(--light);
         }
@@ -615,6 +655,7 @@
             transform: translateY(-10px);
         }
 
+        /* "Популярный" тариф выделяем другим фоном */
         .pricing-card.popular {
             background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
             color: var(--white);
@@ -688,11 +729,14 @@
             font-weight: 700;
         }
 
-        /* FAQ Section */
+        /* =====================
+           FAQ (Частые вопросы)
+           ===================== */
         .faq {
             background: var(--white);
         }
 
+        /* Контейнер для списка вопросов-ответов */
         .faq-grid {
             max-width: 800px;
             margin: 0 auto;
@@ -702,9 +746,10 @@
             background: var(--light);
             border-radius: 15px;
             margin-bottom: 1rem;
-            overflow: hidden;
+            overflow: hidden; /* Чтобы скрывать ответ при закрытии аккордеона */
         }
 
+        /* Кнопка с вопросом, которая открывает/закрывает ответ */
         .faq-question {
             width: 100%;
             padding: 1.5rem;
@@ -731,10 +776,12 @@
             transition: transform 0.3s;
         }
 
+        /* При активном вопросе иконка "+" поворачивается (становится "×") */
         .faq-item.active .faq-question .icon {
             transform: rotate(45deg);
         }
 
+        /* Контейнер с ответом — по умолчанию высота 0 (скрыт) */
         .faq-answer {
             max-height: 0;
             overflow: hidden;
@@ -746,11 +793,15 @@
             color: var(--gray);
         }
 
+        /* При активном пункте увеличиваем max-height, чтобы ответ был виден.
+           200px — условный максимум; если текста больше, можно увеличить. */
         .faq-item.active .faq-answer {
             max-height: 200px;
         }
 
-        /* Contact Section */
+        /* =====================
+           Контакты и форма связи
+           ===================== */
         .contact {
             background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
         }
@@ -768,6 +819,7 @@
             background: rgba(230, 57, 70, 0.3);
         }
 
+        /* Две колонки: слева контакты, справа форма */
         .contact-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -818,6 +870,7 @@
             opacity: 1;
         }
 
+        /* Карточка формы обратной связи */
         .contact-form {
             background: var(--white);
             padding: 2.5rem;
@@ -850,15 +903,17 @@
         .form-group textarea:focus,
         .form-group select:focus {
             outline: none;
-            border-color: var(--primary);
+            border-color: var(--primary); /* Подсветка активного поля */
         }
 
         .form-group textarea {
             min-height: 120px;
-            resize: vertical;
+            resize: vertical; /* Пользователь может тянуть поле по вертикали */
         }
 
-        /* Footer */
+        /* =====================
+           Подвал (footer)
+           ===================== */
         footer {
             background: var(--dark);
             color: var(--white);
@@ -939,7 +994,9 @@
             opacity: 0.7;
         }
 
-        /* Animations */
+        /* =====================
+           Анимации
+           ===================== */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -951,11 +1008,14 @@
             }
         }
 
+        /* Класс для запуска анимации fadeInUp (если потребуется) */
         .animate {
             animation: fadeInUp 0.6s ease-out forwards;
         }
 
-        /* Responsive */
+        /* =====================
+           Адаптивность (media queries)
+           ===================== */
         @media (max-width: 1024px) {
             .hero h1 {
                 font-size: 2.5rem;
@@ -964,13 +1024,14 @@
             .about-content,
             .contact-content,
             .footer-content {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* Переход к одной колонке */
             }
 
             .about-image {
-                order: -1;
+                order: -1; /* Картинка "О нас" поднимается выше текста на планшетах */
             }
 
+            /* Карточки "О нас" перестают быть абсолютными — становятся обычными блоками */
             .about-card {
                 position: relative;
                 top: auto !important;
@@ -982,6 +1043,7 @@
         }
 
         @media (max-width: 768px) {
+            /* Прячем горизонтальное меню, показываем бургер */
             .nav-links {
                 display: none;
             }
@@ -1027,19 +1089,21 @@
             }
         }
 
-        /* Smooth scrolling */
+        /* Плавная прокрутка по якорным ссылкам (#id) */
         html {
             scroll-behavior: smooth;
         }
 
-        /* WhatsApp Float Button */
+        /* ===============================
+           Плавающая кнопка WhatsApp
+           =============================== */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
             right: 30px;
             width: 60px;
             height: 60px;
-            background: #25D366;
+            background: #25D366; /* Официальный цвет WhatsApp */
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -1060,7 +1124,13 @@
 </head>
 <body>
 
-    <!-- Navigation -->
+    <!--
+        Верхнее меню навигации:
+        - логотип
+        - ссылки-якоря по странице
+        - кнопка "Связаться"
+        - бургер-меню для мобильных
+    -->
     <nav>
         <div class="logo">Quality<span>Check</span></div>
         <ul class="nav-links">
@@ -1078,16 +1148,21 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!--
+        Hero-секция (первый экран).
+        Цель: сразу объяснить, кто вы и что делаете, и дать CTA (кнопку заявки).
+    -->
     <section class="hero">
         <div class="hero-content">
             <span class="hero-badge">🇨🇳 Гуандун, Китай</span>
             <h1>Профессиональная <span>инспекция качества</span> товаров в Китае</h1>
             <p>Защитите свой бизнес от брака и некачественной продукции. Проверяем товары прямо на фабриках Гуанчжоу перед отправкой. Экономьте средства проверяя товар прямо на производственной линии.</p>
             <div class="hero-buttons">
+                <!-- Кнопка открытия формы обратной связи -->
                 <a href="#contact" class="btn-primary">📞 Заказать проверку</a>
                 <a href="#services" class="btn-secondary">Узнать больше</a>
             </div>
+            <!-- Блок с ключевыми цифрами (со счётчиком в JS) -->
             <div class="hero-stats">
                 <div class="stat">
                     <div class="stat-number">500+</div>
@@ -1105,7 +1180,7 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- Блок "О компании" -->
     <section class="about" id="about">
         <div class="about-content">
             <div class="about-image">
@@ -1151,7 +1226,7 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Секция "Услуги" -->
     <section class="services" id="services">
         <div class="section-header">
             <span class="section-tag">Наши услуги</span>
@@ -1159,6 +1234,7 @@
             <p>Выберите подходящий тип проверки для вашего бизнеса</p>
         </div>
         <div class="services-grid">
+            <!-- Каждая карточка описывает конкретную услугу и стартовую цену -->
             <div class="service-card">
                 <div class="service-icon">📦</div>
                 <h3>Проверка перед отправкой (PSI)</h3>
@@ -1198,7 +1274,7 @@
         </div>
     </section>
 
-    <!-- Process Section -->
+    <!-- Секция "Как мы работаем" (процесс) -->
     <section class="process" id="process">
         <div class="section-header">
             <span class="section-tag">Как мы работаем</span>
@@ -1229,7 +1305,7 @@
         </div>
     </section>
 
-    <!-- Advantages Section -->
+    <!-- Секция "Наши преимущества" -->
     <section class="advantages" id="advantages">
         <div class="section-header">
             <span class="section-tag">Почему мы</span>
@@ -1282,7 +1358,7 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- Секция "Отзывы клиентов" -->
     <section class="testimonials" id="testimonials">
         <div class="section-header">
             <span class="section-tag">Отзывы</span>
@@ -1326,7 +1402,7 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
+    <!-- Секция "Тарифы" -->
     <section class="pricing" id="pricing">
         <div class="section-header">
             <span class="section-tag">Тарифы</span>
@@ -1379,7 +1455,7 @@
         </div>
     </section>
 
-    <!-- FAQ Section -->
+    <!-- Секция FAQ (Частые вопросы) -->
     <section class="faq" id="faq">
         <div class="section-header">
             <span class="section-tag">FAQ</span>
@@ -1387,6 +1463,7 @@
             <p>Ответы на популярные вопросы о наших услугах</p>
         </div>
         <div class="faq-grid">
+            <!-- Каждый faq-item — один вопрос-ответ с аккордеоном (раскрытием) -->
             <div class="faq-item">
                 <button class="faq-question">
                     <span>Как быстро можно организовать инспекцию?</span>
@@ -1444,7 +1521,11 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!--
+        СЕКЦИЯ "КОНТАКТЫ" + ФОРМА ОБРАТНОЙ СВЯЗИ
+        ВАЖНО: именно здесь пользователь оставляет заявку.
+        Ниже в JS подробно разобрано, как обрабатывается отправка формы.
+    -->
     <section class="contact" id="contact">
         <div class="section-header">
             <span class="section-tag">Контакты</span>
@@ -1452,6 +1533,7 @@
             <p>Ответим на вопросы и рассчитаем стоимость инспекции</p>
         </div>
         <div class="contact-content">
+            <!-- Блок с контактной информацией -->
             <div class="contact-info">
                 <h3>Готовы помочь!</h3>
                 <p>Напишите нам любым удобным способом или заполните форму. Ответим в течение 2 часов в рабочее время (по Пекинскому времени).</p>
@@ -1484,6 +1566,16 @@
                     </div>
                 </div>
             </div>
+
+            <!--
+                ФОРМА ОБРАТНОЙ СВЯЗИ
+                id="contactForm" — используется в JavaScript для навешивания обработчика submit.
+                Поля:
+                - name: имя клиента (обязательное)
+                - contact: телефон или email (обязательное)
+                - service: тип интересующей услуги
+                - message: подробное описание запроса
+            -->
             <form class="contact-form" id="contactForm">
                 <div class="form-group">
                     <label for="name">Ваше имя *</label>
@@ -1509,12 +1601,13 @@
                     <label for="message">Сообщение</label>
                     <textarea id="message" name="message" placeholder="Опишите ваш товар и требования к инспекции..."></textarea>
                 </div>
+                <!-- Кнопка отправки формы. При клике срабатывает JS-обработчик submit -->
                 <button type="submit" class="btn-primary" style="width: 100%;">Отправить заявку</button>
             </form>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Подвал сайта -->
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
@@ -1560,54 +1653,118 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Float Button -->
+    <!--
+        Плавающая кнопка WhatsApp:
+        - всегда внизу справа
+        - по клику открывает диалог WhatsApp с указанным номером
+    -->
     <a href="https://wa.me/77475751914" class="whatsapp-float" target="_blank" title="Написать в WhatsApp">
         💬
     </a>
 
     <script>
-        // FAQ Accordion
+        /* =============================
+           1. FAQ Accordion (раскрывающийся список вопросов)
+           ============================= */
+
+        // Находим все кнопки с вопросами FAQ
         document.querySelectorAll('.faq-question').forEach(button => {
+            // На каждую кнопку вешаем обработчик клика
             button.addEventListener('click', () => {
-                const faqItem = button.parentElement;
-                const isActive = faqItem.classList.contains('active');
-                
-                // Close all other FAQ items
+                const faqItem = button.parentElement;          // Родительский .faq-item
+                const isActive = faqItem.classList.contains('active'); // Активен ли сейчас этот пункт
+
+                // Сначала закрываем все остальные FAQ-пункты
                 document.querySelectorAll('.faq-item').forEach(item => {
                     item.classList.remove('active');
                 });
-                
-                // Toggle current item
+
+                // Если текущий пункт был неактивен — открываем его
                 if (!isActive) {
                     faqItem.classList.add('active');
                 }
+                // Если был активен — мы его только что выключили, и он останется закрытым
             });
         });
 
-        // Form submission
+        /* ==============================================
+           2. Обработка отправки формы обратной связи
+              ВАЖНО: здесь описывается логика "обратной связи"
+           ============================================== */
+
+        /*
+            Шаги работы формы:
+
+            1) Пользователь заполняет форму #contactForm и нажимает "Отправить заявку".
+            2) Событие submit перехватывается JavaScript (e.preventDefault()),
+               чтобы страница не перезагружалась стандартным способом.
+            3) Собираем все данные формы в объект data.
+            4) Сейчас данные просто выводятся в консоль и показывается alert.
+               НА ПРАКТИКЕ:
+               - здесь нужно отправлять данные на сервер (email, CRM, Telegram-бот и т.п.)
+               - пример размещён в комментарии внутри обработчика.
+            5) После удачной отправки форма сбрасывается (this.reset()).
+        */
+
         document.getElementById('contactForm').addEventListener('submit', function(e) {
+            // Отменяем стандартное поведение формы (перезагрузку страницы)
             e.preventDefault();
             
-            // Get form data
+            // Собираем данные формы в объект FormData
             const formData = new FormData(this);
+
+            // Преобразуем FormData в обычный объект для удобства
             const data = Object.fromEntries(formData);
-            
-            // Here you would typically send the data to a server
+
+            /*
+                В данный момент данные заявки просто выводятся в консоль браузера.
+                Это нужно только для отладки (вы можете открыть DevTools и посмотреть данные).
+
+                В реальном проекте ЗДЕСЬ должна идти отправка данных на сервер.
+                Варианты реализации обратной связи:
+
+                1) Отправка на backend через fetch:
+                   fetch('https://ваш-домен/api/contact', {
+                       method: 'POST',
+                       headers: {
+                           'Content-Type': 'application/json'
+                       },
+                       body: JSON.stringify(data)
+                   })
+                   .then(response => response.json())
+                   .then(result => {
+                       // Здесь можно показать сообщение об успехе
+                   })
+                   .catch(error => {
+                       // Здесь — обработка ошибки (показать сообщение пользователю)
+                   });
+
+                2) Отправка через сервисы типа Formspree, Getform и т.п.
+                   (обычно достаточно поменять action и method у формы, без JS).
+
+                3) Отправка в Telegram / CRM / почту через ваш серверный скрипт.
+            */
             console.log('Form submitted:', data);
             
-            // Show success message
+            // Показываем пользователю уведомление об успешной отправке
             alert('Спасибо за заявку! Мы свяжемся с вами в ближайшее время.');
             
-            // Reset form
+            // Очищаем форму (сбрасываем все поля к исходному состоянию)
             this.reset();
         });
 
-        // Smooth scroll for navigation links
+        /* ==================================
+           3. Плавный скролл по якорным ссылкам
+           ================================== */
+
+        // Ищем все ссылки, у которых href начинается с "#"
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
+                // Отменяем стандартный "резкий" переход
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
+                    // Плавно прокручиваем страницу к нужной секции
                     target.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
@@ -1616,19 +1773,29 @@
             });
         });
 
-        // Navigation background on scroll
+        /* ==================================
+           4. Изменение тени навигации при прокрутке
+           ================================== */
+
         window.addEventListener('scroll', function() {
             const nav = document.querySelector('nav');
             if (window.scrollY > 100) {
+                // Если прокрутили страницу вниз > 100px — усиливаем тень под меню
                 nav.style.boxShadow = '0 2px 30px rgba(0,0,0,0.15)';
             } else {
+                // Возвращаем исходную лёгкую тень
                 nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
             }
         });
 
-        // Mobile menu toggle (basic implementation)
+        /* ==================================
+           5. Мобильное бургер-меню (простая реализация)
+           ================================== */
+
         document.querySelector('.mobile-menu').addEventListener('click', function() {
             const navLinks = document.querySelector('.nav-links');
+
+            // Примитивное переключение display: flex / none
             if (navLinks.style.display === 'flex') {
                 navLinks.style.display = 'none';
             } else {
@@ -1644,7 +1811,13 @@
             }
         });
 
-        // Intersection Observer for animations
+        /* ==================================
+           6. Intersection Observer для анимаций появления
+           ================================== */
+
+        // Настройки наблюдателя:
+        // - threshold: 0.1 -> элемент считается видимым, когда 10% внутри вьюпорта
+        // - rootMargin: сдвиг нижней границы на -50px, чтобы анимация запускалась чуть заранее
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1652,52 +1825,77 @@
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
+                // Если элемент попал в область видимости
                 if (entry.isIntersecting) {
+                    // Делаем его полностью видимым и поднимаем на место
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
                 }
             });
         }, observerOptions);
 
-        // Apply animation to elements
+        // На какие элементы вешаем анимацию появления:
+        // карточки услуг, шаги процесса, преимущества, отзывы, тарифы
         document.querySelectorAll('.service-card, .process-step, .advantage-card, .testimonial-card, .pricing-card').forEach(el => {
+            // Изначально скрываем и смещаем вниз, чтобы был эффект "подъёма"
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            // Подключаем элемент к наблюдателю
             observer.observe(el);
         });
 
-        // Counter animation for stats
+        /* ==================================
+           7. Анимация счётчиков (цифры в hero-секции)
+           ================================== */
+
+        /*
+            Функция animateCounter:
+            - element: DOM-элемент, где отображается число
+            - target: конечное значение
+            - duration: длительность анимации в мс (по умолчанию 2000 = 2 секунды)
+        */
         function animateCounter(element, target, duration = 2000) {
             let start = 0;
-            const increment = target / (duration / 16);
-            
+            const increment = target / (duration / 16); // Приблизительно 60 кадров/сек (1000мс/16 ≈ 60)
+
             const timer = setInterval(() => {
                 start += increment;
                 if (start >= target) {
+                    // Дошли до конечного значения
                     element.textContent = target + (element.dataset.suffix || '');
                     clearInterval(timer);
                 } else {
+                    // Показываем текущий шаг анимации (округляя вниз)
                     element.textContent = Math.floor(start) + (element.dataset.suffix || '');
                 }
             }, 16);
         }
 
-        // Trigger counter animation when hero section is visible
+        /*
+            Наблюдатель за hero-секцией:
+            как только первый экран попадает в область видимости
+            (на случай, если пользователь перезагрузил страницу не сверху),
+            запускаем анимацию для всех .stat-number и отключаем наблюдатель.
+        */
         const heroObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    // Для каждой цифры:
                     document.querySelectorAll('.stat-number').forEach(stat => {
-                        const value = parseInt(stat.textContent);
-                        const suffix = stat.textContent.replace(/[0-9]/g, '');
-                        stat.dataset.suffix = suffix;
+                        // Текущее содержание, например "500+"
+                        const value = parseInt(stat.textContent);                // 500
+                        const suffix = stat.textContent.replace(/[0-9]/g, '');  // "+"
+                        stat.dataset.suffix = suffix;                            // сохраняем суффикс в data-атрибут
                         animateCounter(stat, value);
                     });
+                    // Больше наблюдать за hero не нужно
                     heroObserver.disconnect();
                 }
             });
         }, { threshold: 0.5 });
 
+        // Подключаем наблюдатель к hero-блоку
         heroObserver.observe(document.querySelector('.hero'));
     </script>
 
