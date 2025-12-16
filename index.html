@@ -586,10 +586,86 @@
         }
 
         /* =====================
+           Галерея фото заводов
+           ===================== */
+        .factory-gallery {
+            background: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(20, 33, 61, 0.95) 0%, rgba(20, 33, 61, 0.7) 50%, transparent 100%);
+            padding: 2rem 1.5rem 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-overlay p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+        }
+
+        .gallery-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* =====================
            Отзывы
            ===================== */
         .testimonials {
-            background: var(--white);
+            background: var(--light);
         }
 
         .testimonials-grid {
@@ -599,10 +675,11 @@
         }
 
         .testimonial-card {
-            background: var(--light);
+            background: var(--white);
             padding: 2.5rem;
             border-radius: 20px;
             position: relative;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
         }
 
         /* Декоративная кавычка в левом верхнем углу отзыва */
@@ -662,7 +739,7 @@
            Тарифы (Pricing)
            ===================== */
         .pricing {
-            background: var(--light);
+            background: var(--white);
         }
 
         .pricing-grid {
@@ -672,7 +749,7 @@
         }
 
         .pricing-card {
-            background: var(--white);
+            background: var(--light);
             padding: 3rem 2rem;
             border-radius: 20px;
             text-align: center;
@@ -763,7 +840,7 @@
            FAQ (Частые вопросы)
            ===================== */
         .faq {
-            background: var(--white);
+            background: var(--light);
         }
 
         /* Контейнер для списка вопросов-ответов */
@@ -773,10 +850,11 @@
         }
 
         .faq-item {
-            background: var(--light);
+            background: var(--white);
             border-radius: 15px;
             margin-bottom: 1rem;
             overflow: hidden; /* Чтобы скрывать ответ при закрытии аккордеона */
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
         }
 
         /* Кнопка с вопросом, которая открывает/закрывает ответ */
@@ -1070,6 +1148,10 @@
                 left: auto !important;
                 margin-top: 1rem;
             }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
@@ -1105,6 +1187,10 @@
 
             .section-header h2 {
                 font-size: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -1220,6 +1306,7 @@ Verification: b3ddbf634c11a10c
             <li><a href="#about">О нас</a></li>
             <li><a href="#services">Услуги</a></li>
             <li><a href="#process">Как работаем</a></li>
+            <li><a href="#gallery">Галерея</a></li>
             <li><a href="#pricing">Цены</a></li>
             <li><a href="#faq">FAQ</a></li>
         </ul>
@@ -1436,6 +1523,49 @@ Verification: b3ddbf634c11a10c
                 <div>
                     <h3>Гарантия качества</h3>
                     <p>Если пропустим критический дефект — проведем повторную инспекцию бесплатно</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция "Галерея фото заводов" -->
+    <section class="factory-gallery" id="gallery">
+        <div class="section-header">
+            <span class="section-tag">Наша работа</span>
+            <h2>Фото с заводов</h2>
+            <p>Образцы наших проверок товаров на производствах Китая</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="001.jpg" alt="Проверка качества товаров на заводе - образец инспекции 1">
+                <span class="gallery-badge">Инспекция PSI</span>
+                <div class="gallery-overlay">
+                    <h4>Проверка электроники</h4>
+                    <p>Контроль качества партии перед отгрузкой</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="002.jpg" alt="Проверка качества товаров на заводе - образец инспекции 2">
+                <span class="gallery-badge">Аудит фабрики</span>
+                <div class="gallery-overlay">
+                    <h4>Аудит производства</h4>
+                    <p>Оценка производственных мощностей</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="003.jpg" alt="Проверка качества товаров на заводе - образец инспекции 3">
+                <span class="gallery-badge">Проверка DPI</span>
+                <div class="gallery-overlay">
+                    <h4>Инспекция на линии</h4>
+                    <p>Контроль в процессе производства</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="004.jpg" alt="Проверка качества товаров на заводе - образец инспекции 4">
+                <span class="gallery-badge">Контроль загрузки</span>
+                <div class="gallery-overlay">
+                    <h4>Контроль отгрузки</h4>
+                    <p>Присутствие при загрузке контейнера</p>
                 </div>
             </div>
         </div>
@@ -1918,8 +2048,8 @@ Verification: b3ddbf634c11a10c
         }, observerOptions);
 
         // На какие элементы вешаем анимацию появления:
-        // карточки услуг, шаги процесса, преимущества, отзывы, тарифы
-        document.querySelectorAll('.service-card, .process-step, .advantage-card, .testimonial-card, .pricing-card').forEach(el => {
+        // карточки услуг, шаги процесса, преимущества, отзывы, тарифы, галерея
+        document.querySelectorAll('.service-card, .process-step, .advantage-card, .testimonial-card, .pricing-card, .gallery-item').forEach(el => {
             // Изначально скрываем и смещаем вниз, чтобы был эффект "подъёма"
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
